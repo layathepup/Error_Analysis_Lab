@@ -1,0 +1,102 @@
+\Problem{1: Chromatography}
+
+\begin{table}
+    \centering
+    \csvautotabular{retention_times.dat}
+    \caption{Chromatography retention times}
+    \label{tab:ret_times}
+\end{table}
+
+A set of retention times from gas chromatography is given by table \ref{tab:ret_times}. 
+The mean retention time, standard deviation for a single degree of freedom, and standard deviation of the mean (also called standard error) are described:
+
+\begin{align}
+    \bar{x} & = \frac{\sum_i x_i}{N} \stepcounter{equation} \tag{\text{Arithmetic Mean, 1}} \\
+    \sigma & = \sqrt \frac{\sum (x_i-\bar{x})^2}{N-1}
+    \stepcounter{equation} \tag{\text{Standard Deviation, 2}} \\
+    \text{SE} & = \frac{\sigma}{\sqrt{N}}
+    \stepcounter{equation} \tag{\text{Standard Deviation of Mean, 3}}
+\end{align}
+
+Evaluating for table \ref{tab:ret_times} yields:
+
+\begin{align}
+    \bar{x} & = TODO \\
+    \sigma & = TODO \\
+    \sigma_{\bar{x}} & = TODO
+\end{align}
+
+\Problem{2: Bomb Calorimetry}
+
+Analyte A was trialed in a bomb calorimeter \ref{tab:calorimetry}.  
+
+\begin{table}
+    \centering
+    \csvautotabular{calorimeter_results.dat}
+    \caption{Bomb Calorimetry of Analyte A}
+    \label{tab:calorimetry}
+\end{table}
+
+The bomb calorimeter constant is given as $2422(3) \, \mathrm{cal} \cdot \mathrm{deg}^{-1}$.  The enthalpy of combustion can be expressed as difference in temperature multiplied by the combustion constant:
+
+\begin{align}
+    \Delta H = C_{bomb} \cdot \Delta T
+    \label{bomb_energy}
+\end{align}
+
+Error can be propagated through an expression according to linear error propagation theory, which can be represented with the formula:
+
+\begin{align}
+    \sigma = \sqrt{ \left( \frac{\partial f}{\partial x} \cdot \sigma_x \right)^2 +
+                    \left( \frac{\partial f}{\partial y} \cdot \sigma_y \right)^2 +
+                    \dots +
+                    \left( \frac{\partial f}{\partial z} \cdot \sigma_z \right)^2 }
+    \label{prop}
+\end{align}
+
+Sigma can represent either standard error or standard deviation.  If standard deviation is used, the result can be converted to standard error so long as each sample set has the same size, as constants can be factored out of the square root. \\
+Standard error can be converted to a confidence interval using the expression:
+
+\begin{align}
+    \text{CI} & = \bar{x} \pm z \cdot \frac{\sigma}{\sqrt{N}}
+    \label{ci}
+\end{align}
+
+That is, by multiplying the standard error by a Student value $z$ corresponding to the  confidence level desired and the size of the sample set (\ref{appendixA}). \\
+Substituting table (\ref{tab:calorimetry}) into (\ref{bomb_energy}) and handling error according to (\ref{prop}) yields the per mass enthalpy of combustion:
+
+\begin{align}
+    \Delta U_{m, combustion} & = TODO \skipcounter \tag{STD DEV, 10} \\
+    & = TODO \skipcounter \tag{STD ERR, 11} \\
+    & = TODO \skipcounter \tag{95\% CI, 12}
+\end{align}
+
+\Problem{3: Titration}
+
+The error contributed by instruments should be factored into the total error.  The error of a $500 \, \si{\ml}$ volumetric flask in given to be $0.20 \, \si{\ml}$.  The error of a burrette is given to be $0.05 \, \si{\ml}$.  The error of a analytical balance in given to be $0.0001 \, \si{\gram}$.  The molarity of an titrated unknown is given by the equation:
+
+\begin{align}
+    m_u & = \frac{M_t}{M_u} \cdot \frac{a}{b} \cdot C_t \cdot \Detla V_t \\
+    \intertext{\hspace{1cm} Where,}
+    aA & \longrightarrow bB
+\end{align}
+
+Using the molar mass of benzoic acid, $122.12 \, \si{\gram \per \mol}$ (PubChem), the molar mass of Sodium Hydroxide, $39.997 \, \si{\gram \per \mol}$ (PubChem), the given mass of Sodium Hydroxide, $4.6556 \, \si{\gram}$, the initial tritate volume, $43.74$, the final volume $2.38$, and the expression for concentration, $C = m/v$, and applying the errors and propagating them according to (\ref{prop}) yields unknown mass of benzoic acid and its standard error, $TODO$:
+
+\Problem{4: Volume of Bulb}
+
+An apparatus is described where a empty bulb is attached to a rigid tube with a volume of $623.2(5) \, \si{\ml}$ and an initial pressure of $202.3(5) \, \text{Torr}$.  A valve between the bulb and tube, allowing gas to escape into the bulb.  The final pressure of the connected tube and bulb is $123.6(5) \, \text{Torr}$.  The volume of the connected tube and bulb can be estimated using the ideal gas law:
+
+\begin{align}
+    PV & = nRT \\
+    \intertext{\hspace{1cm} Then,}
+    p_i v_i & = p_f v_f \\
+    v_f & = \frac{p_i}{p_f} \\
+    \intertext{\hspace{1cm} The volume of the tube subtracted from the total volume gives the volume of the bulb}
+    v_{bulb} & = v_{total} - v_{tube}
+\end{align}
+
+Evaluating and propagating error results in $v_bulb = TODO$
+
+\Problem{5}
+
