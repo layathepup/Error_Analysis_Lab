@@ -96,3 +96,4 @@ m = m_nom / m_denom
 c = y_mean - m * x_mean
 
 plt.plot(uc.nominal_value(x_w_err), uc.std_dev(y_w_err))
+:
